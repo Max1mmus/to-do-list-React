@@ -2,6 +2,8 @@ import React from 'react';
 import {Form} from './Form';
 import {List} from './List';
 
+//localStorage.clear();
+let todos;
 export class App extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +38,20 @@ export class App extends React.Component {
         })
     }
 
+    componentDidMount() {
+        if (localStorage.getItem("list")) {
+            todos = JSON.parse(localStorage.getItem("list"))
+            this.setState({
+                userInputs: todos
+            })
+        }
+    }
+
+    componentDidUpdate() {
+        todos = this.state.userInputs;
+        localStorage.setItem("list", JSON.stringify(todos));
+    }
+    
     render (){
         return (
             <div className='app'>
