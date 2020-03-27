@@ -19,6 +19,13 @@ form {
   margin: auto;
 }
 
+form input {
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
 h1 {
   text-align: center;
 }
@@ -47,7 +54,7 @@ li {
 }
 
 li:hover {
-  background-color: #00CDB00D;
+  background-color: #8EFFEF57;
 }
 
 input[type=checkbox]:checked + span {
@@ -58,15 +65,17 @@ input[type=checkbox] {
   outline: none;
 }
 
-.submitBtn {
-  border-radius: 2px;
-  height: 22px;
-}
 .list {
   list-style: none;
 }
 
-.deleteBtn {
+button {
   margin-left: 5px;
   height: 30px;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
 }
