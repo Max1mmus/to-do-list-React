@@ -6,7 +6,7 @@
 
 ### Visual 
 
-<img src="sample.jpg" width="400">
+<img src="sample.jpg" width="370">
 
 
 ### To start the app run:
