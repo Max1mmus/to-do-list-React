@@ -32,7 +32,7 @@ export class App extends React.Component {
     }
 
     removeTask = (index) => {
-        const newInputs = this.state.userInputs.filter((task, taskIndex) => {return taskIndex !== index})
+        const newInputs = this.state.userInputs.filter((task, taskIndex) => taskIndex !== index)
         this.setState({
             userInputs: newInputs
         })
