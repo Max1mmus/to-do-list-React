@@ -9,8 +9,8 @@ export class App extends React.Component {
         super(props);
 
         this.state = {
-            userInput: '',
-            userInputs: [],
+            newTask: '',
+            allTasks: [],
         };
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -18,23 +18,23 @@ export class App extends React.Component {
 
     onChange(e) {
         this.setState({
-            userInput: e.target.value,
+            newTask: e.target.value,
         })
     }
 
     onSubmit(e) {
         e.preventDefault();
-        if (this.state.userInput === '') return;
+        if (this.state.newTask === '') return;
         this.setState({
-            userInput: '',
-            userInputs: [...this.state.userInputs, this.state.userInput ]
+            newTask: '',
+            allTasks: [...this.state.allTasks, this.state.newTask ]
         })
     }
 
     removeTask = (index) => {
-        const newInputs = this.state.userInputs.filter((task, taskIndex) => taskIndex !== index)
+        const newTasks = this.state.allTasks.filter((task, taskIndex) => taskIndex !== index)
         this.setState({
-            userInputs: newInputs
+            allTasks: newTasks
         })
     }
 
@@ -42,13 +42,13 @@ export class App extends React.Component {
         if (localStorage.getItem("list")) {
             todos = JSON.parse(localStorage.getItem("list"))
             this.setState({
-                userInputs: todos
+                allTasks: todos
             })
         }
     }
 
     componentDidUpdate() {
-        todos = this.state.userInputs;
+        todos = this.state.allTasks;
         localStorage.setItem("list", JSON.stringify(todos));
     }
     
@@ -58,10 +58,10 @@ export class App extends React.Component {
                 <Form
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
-                    value={this.state.userInput}
+                    value={this.state.newTask}
                 />
                 <List
-                    input={this.state.userInputs}
+                    input={this.state.allTasks}
                     delete={(index) => {this.removeTask(index)}}
                 />
             </div>
