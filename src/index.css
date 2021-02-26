@@ -48,7 +48,6 @@ li {
   font-size: 25px;
   max-width: 400px;
   display: flex;
-  justify-content: space-between;
   transition: .1s ease-in;
   align-items: center;
 }
