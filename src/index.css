@@ -53,11 +53,20 @@ li {
   align-items: center;
 }
 
+.list-content {
+  word-wrap: break-word;
+  margin-right: 5px;
+}
+
+.deleteBtn {
+  margin-left: auto;
+}
+
 li:hover {
   background-color: #8EFFEF57;
 }
 
-input[type=checkbox]:checked + .listContent {
+input[type=checkbox]:checked + .list-content {
   text-decoration: line-through;
 }
 
