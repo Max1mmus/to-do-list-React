@@ -34,7 +34,7 @@ h1 {
   display: inline-block;
 }
 
-.listClass {
+.list-wrapper {
   width: max-content;
   margin: auto;
 }
