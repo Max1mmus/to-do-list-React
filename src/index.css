@@ -75,6 +75,6 @@ button {
   border: none;
 }
 
-button:hover {
-  cursor: pointer;
+li,button,form input {
+  border-radius: 5px;
 }
