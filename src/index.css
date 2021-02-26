@@ -57,7 +57,7 @@ li:hover {
   background-color: #8EFFEF57;
 }
 
-input[type=checkbox]:checked + span {
+input[type=checkbox]:checked + .listContent {
   text-decoration: line-through;
 }
 
