@@ -30,8 +30,8 @@ h1 {
   text-align: center;
 }
 
-.input-field {
-  display: inline-block;
+.submitBtn {
+  margin-left: 5px;
 }
 
 .list-wrapper {
