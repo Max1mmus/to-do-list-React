@@ -63,10 +63,7 @@ input[type=checkbox]:checked + span {
 
 input[type=checkbox] {
   outline: none;
-}
-
-.list {
-  list-style: none;
+  margin-left: 0px;
 }
 
 button {
