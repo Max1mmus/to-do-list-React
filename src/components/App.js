@@ -58,11 +58,11 @@ export class App extends React.Component {
                 <Form
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
-                    value={this.state.newTask}
+                    inputValue={this.state.newTask}
                 />
                 <List
                     input={this.state.allTasks}
-                    delete={(index) => {this.removeTask(index)}}
+                    onDelete={(index) => {this.removeTask(index)}}
                 />
             </div>
         )
