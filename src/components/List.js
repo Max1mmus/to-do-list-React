@@ -1,24 +1,19 @@
-import React from 'react';
+import React from "react";
 
-export const List = (props) => {
+export const List = ({input, onDelete}) => {
     return(
-        <div className='listClass'>
+        <div className="list-wrapper">
             <ul>
                 {
-                    props.input.map((inputs, index) =>
-                    <li 
-                        key={index}
-                        index={index}>
-                            <input type='checkbox'></input>
-                            <span>
-                                {inputs}
-                            </span>
-                            <button 
-                                className='deleteBtn'
-                                onClick={() => props.delete(index)}>
+                    input.map((inputs, index) =>
+                        <li key={index} index={index}>
+                            <input type="checkbox"></input>
+                            <span className="list-content">{inputs}</span>
+                            <button className="deleteBtn" onClick={() => onDelete(index)}>
                                 Delete
                             </button>
-                    </li>)
+                        </li>
+                    )
                 }
             </ul>
         </div>
