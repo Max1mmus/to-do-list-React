@@ -32,7 +32,7 @@ export class App extends React.Component {
     }
 
     removeTask = (index) => {
-        const newTasks = this.state.allTasks.filter((task, taskIndex) => taskIndex !== index)
+        const newTasks = this.state.allTasks.filter((_, taskIndex) => taskIndex !== index)
         this.setState({
             allTasks: newTasks
         })
