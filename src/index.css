@@ -65,7 +65,7 @@ li:hover {
   background-color: #8EFFEF57;
 }
 
-input[type=checkbox]:checked + .list-content {
+.lineTrough {
   text-decoration: line-through;
 }
 
