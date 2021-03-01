@@ -41,8 +41,9 @@ export class App extends Component {
         let savedTasks = JSON.parse(localStorage.getItem("list"));
         if (localStorage.getItem("list")) {
             this.setState({
-            allTasks: storedTasks
-        });
+                allTasks: savedTasks 
+            })
+        }
         console.log(localStorage.getItem("list"));
     }
 
