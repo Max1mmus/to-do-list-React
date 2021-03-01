@@ -32,7 +32,7 @@ export class App extends React.Component {
     }
 
     removeTask = (index) => {
-        const newTasks = this.state.allTasks.filter((_, taskIndex) => taskIndex !== index)
+        const newTasks = this.state.allTasks.filter((_, taskIndex) => taskIndex !== index);
         this.setState({
             allTasks: newTasks
         })
@@ -47,11 +47,14 @@ export class App extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        todos = this.state.allTasks;
-        localStorage.setItem("list", JSON.stringify(todos));
+    componentDidMount() {
+        const storedTasks = JSON.parse(localStorage.getItem("list"));
+        this.setState({
+            allTasks: storedTasks
+        });
+        console.log(localStorage.getItem("list"));
     }
-    
+
     render (){
         return (
             <div className='app'>
