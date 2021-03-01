@@ -1,19 +1,24 @@
 import React from "react";
 
-export const List = ({input, onDelete}) => {
+export const List = ({tasks, onDelete, checkboxChange}) => {
     return(
         <div className="list-wrapper">
             <ul>
-                {
-                    input.map((inputs, index) =>
-                        <li key={index} index={index}>
-                            <input type="checkbox"></input>
-                            <span className="list-content">{inputs}</span>
-                            <button className="deleteBtn" onClick={() => onDelete(index)}>
-                                Delete
-                            </button>
-                        </li>
-                    )
+                {tasks.map((task, index) =>
+                    <li key={`list-${index}`}>
+                        <input 
+                            type="checkbox" 
+                            id={`input-${index}`} 
+                            onChange={(e) => checkboxChange(index,e)}
+                            checked={task.isDone}>
+                        </input>
+                        <label className="list-label" htmlFor={`item-${index}`}>
+                            {task.taskContent}
+                        </label>
+                        <button className="deleteBtn" onClick={() => onDelete(index)}>
+                            Delete
+                        </button>
+                    </li>)
                 }
             </ul>
         </div>
