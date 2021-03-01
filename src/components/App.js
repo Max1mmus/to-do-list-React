@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Form} from './Form';
 import {List} from './List';
 
 //localStorage.clear();
-let todos;
-export class App extends React.Component {
+export class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             newTask: '',
-            allTasks: [],
+            allTasks: []
         };
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -36,15 +35,6 @@ export class App extends React.Component {
         this.setState({
             allTasks: newTasks
         })
-    }
-
-    componentDidMount() {
-        if (localStorage.getItem("list")) {
-            todos = JSON.parse(localStorage.getItem("list"))
-            this.setState({
-                allTasks: todos
-            })
-        }
     }
 
     componentDidMount() {
