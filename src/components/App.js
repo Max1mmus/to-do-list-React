@@ -72,7 +72,8 @@ export class App extends Component {
                     inputValue={this.state.newTask}
                 />
                 <List
-                    input={this.state.allTasks}
+                    checkboxChange={(index,e) => this.checkboxChange(index,e)}
+                    tasks={this.state.allTasks}
                     onDelete={(index) => {this.removeTask(index)}}
                 />
             </div>
