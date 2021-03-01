@@ -34,8 +34,19 @@ export class App extends Component {
         const newTasks = this.state.allTasks.filter((_, taskIndex) => taskIndex !== index);
         this.setState({
             allTasks: newTasks
-        })
+        }, () => localStorage.setItem("list", JSON.stringify(newTasks)))
     }
+
+    checkboxChange = (index,e) => {
+        const copiedTasks = [...this.state.allTasks];
+        if (e.target.id === `input-${index}`) {
+            copiedTasks[index].isDone = !copiedTasks[index].isDone;
+        }
+
+        this.setState({
+            allTasks: copiedTasks
+        }, () => localStorage.setItem("list", JSON.stringify(copiedTasks)))
+    } 
 
     componentDidMount() {
         let savedTasks = JSON.parse(localStorage.getItem("list"));
