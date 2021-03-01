@@ -4,6 +4,8 @@
 
 * Saving to local storage
 
+*Update: added code for saving finished (crossed out) tasks to local storage* 
+
 ### Visual 
 
 <img src="sample.jpg" width="370">
