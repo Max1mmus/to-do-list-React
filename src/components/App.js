@@ -23,11 +23,16 @@ export class App extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        const task = {
+            taskContent: this.state.newTask,
+            isDone: false
+        }
         if (this.state.newTask === '') return;
+
         this.setState({
             newTask: '',
-            allTasks: [...this.state.allTasks, this.state.newTask ]
-        })
+            allTasks: [...this.state.allTasks, task]
+        }, () => localStorage.setItem("list",JSON.stringify(this.state.allTasks)))
     }
 
     removeTask = (index) => {
