@@ -38,8 +38,9 @@ export class App extends Component {
     }
 
     componentDidMount() {
-        const storedTasks = JSON.parse(localStorage.getItem("list"));
-        this.setState({
+        let savedTasks = JSON.parse(localStorage.getItem("list"));
+        if (localStorage.getItem("list")) {
+            this.setState({
             allTasks: storedTasks
         });
         console.log(localStorage.getItem("list"));
