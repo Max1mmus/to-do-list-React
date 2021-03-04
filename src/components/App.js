@@ -1,83 +1,67 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
+import { useEffect } from 'react';
 import {Form} from './Form';
 import {List} from './List';
-
 //localStorage.clear();
-export class App extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            newTask: '',
-            allTasks: []
-        };
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
+export function App () {
+    const [newTask, setNewTask] = useState('');
+    const [allTasks, setAllTasks] = useState([]);
+
+    function onChange(e) {
+        setNewTask(e.target.value);
     }
 
-    onChange(e) {
-        this.setState({
-            newTask: e.target.value,
-        })
-    }
-
-    onSubmit(e) {
+    function onSubmit(e) {
         e.preventDefault();
         const task = {
-            taskContent: this.state.newTask,
+            taskContent: newTask,
             isDone: false
-        }
-        if (this.state.newTask === '') return;
+        };
+        if (newTask === '') return;
 
-        this.setState({
-            newTask: '',
-            allTasks: [...this.state.allTasks, task]
-        }, () => localStorage.setItem("list",JSON.stringify(this.state.allTasks)))
+        setNewTask('');
+        setAllTasks([...allTasks, task]);
     }
 
-    removeTask = (index) => {
-        const newTasks = this.state.allTasks.filter((_, taskIndex) => taskIndex !== index);
-        this.setState({
-            allTasks: newTasks
-        }, () => localStorage.setItem("list", JSON.stringify(newTasks)))
+    const removeTask = (index) => {
+        const newTasks = allTasks.filter((_, taskIndex) => taskIndex !== index);
+        setAllTasks(newTasks);
     }
 
-    checkboxChange = (index,e) => {
-        const copiedTasks = [...this.state.allTasks];
+    const checkboxChange = (index,e) => {
+        const copiedTasks = [...allTasks];
         if (e.target.id === `input-${index}`) {
             copiedTasks[index].isDone = !copiedTasks[index].isDone;
         }
-
-        this.setState({
-            allTasks: copiedTasks
-        }, () => localStorage.setItem("list", JSON.stringify(copiedTasks)))
+        setAllTasks(copiedTasks);
     } 
 
-    componentDidMount() {
-        let savedTasks = JSON.parse(localStorage.getItem("list"));
-        if (localStorage.getItem("list")) {
-            this.setState({
-                allTasks: savedTasks 
-            })
+    useEffect(() => {
+        const savedTasks = JSON.parse(localStorage.getItem("list"));
+        if (savedTasks) {
+            setAllTasks(savedTasks);
         }
         console.log(localStorage.getItem("list"));
-    }
+    }, []);
 
-    render (){
-        return (
-            <div className='app'>
-                <h1>To-do List</h1>
-                <Form
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    inputValue={this.state.newTask}
-                />
-                <List
-                    checkboxChange={(index,e) => this.checkboxChange(index,e)}
-                    tasks={this.state.allTasks}
-                    onDelete={(index) => {this.removeTask(index)}}
-                />
-            </div>
-        )
-    }
+    useEffect(() => {
+        localStorage.setItem("list", JSON.stringify(allTasks));
+    }, [allTasks]);
+
+    return (
+        <div className='app'>
+            <h1>To-do List</h1>
+            <Form
+                onSubmit={onSubmit}
+                onChange={onChange}
+                inputValue={newTask}
+            />
+            <List
+                checkboxChange={(index,e) => checkboxChange(index,e)}
+                tasks={allTasks}
+                onDelete={(index) => {removeTask(index)}}
+            />
+        </div>
+    )
 }
