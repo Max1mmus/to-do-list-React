@@ -47,7 +47,6 @@ li {
   margin: 2px;
   font-size: 25px;
   display: flex;
-  transition: .1s ease-in;
   align-items: center;
 }
 
