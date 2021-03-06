@@ -47,17 +47,23 @@ li {
   margin: 2px;
   font-size: 25px;
   display: flex;
-  align-items: center;
 }
 
-.list-label {
+.task-text {
   max-width: 400px;
   word-wrap: break-word;
+  margin: 0px;
   margin-right: 5px;
+}
+
+.timestamp {
+  margin: 0px;
+  font-size: 15px;
 }
 
 .deleteBtn {
   margin-left: auto;
+  align-self: center;
 }
 
 li:hover {
