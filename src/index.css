@@ -70,7 +70,7 @@ li:hover {
   background-color: #8EFFEF57;
 }
 
-input[type=checkbox]:checked + label{
+input[type=checkbox]:checked + .card-content .task-text{
   text-decoration: line-through;
 }
 
