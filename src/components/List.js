@@ -12,9 +12,10 @@ export const List = ({tasks, onDelete, checkboxChange}) => {
                             onChange={(e) => checkboxChange(index,e)}
                             checked={task.isDone}>
                         </input>
-                        <label className="list-label" htmlFor={`item-${index}`}>
-                            {task.taskContent}
-                        </label>
+                        <div className="card-content">
+                            <p className="task-text">{task.taskContent}</p>
+                            <p className="timestamp">{task.timeStamp}</p>
+                        </div>
                         <button className="deleteBtn" onClick={() => onDelete(index)}>
                             Delete
                         </button>
