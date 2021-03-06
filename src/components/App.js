@@ -16,7 +16,8 @@ export function App () {
         e.preventDefault();
         const task = {
             taskContent: newTask,
-            isDone: false
+            isDone: false,
+            timeStamp: calcTime()
         };
         if (newTask === '') return;
 
@@ -35,7 +36,16 @@ export function App () {
             copiedTasks[index].isDone = !copiedTasks[index].isDone;
         }
         setAllTasks(copiedTasks);
-    } 
+    }
+
+    function calcTime () {
+        const today = new Date(); 
+        const options = {
+            weekday: "long", year: "numeric", month: "short",  
+            day: "numeric", hour: "2-digit", minute: "2-digit"  
+        }; 
+        return today.toLocaleDateString("en-us", options);
+    }
 
     useEffect(() => {
         const savedTasks = JSON.parse(localStorage.getItem("list"));
