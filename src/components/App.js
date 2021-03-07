@@ -41,8 +41,8 @@ export function App () {
     function calcTime () {
         const today = new Date(); 
         const options = {
-            weekday: "long", year: "numeric", month: "short",  
-            day: "numeric", hour: "2-digit", minute: "2-digit"  
+            weekday: "long", year: "numeric", month: "short",
+            day: "numeric", hour: "2-digit", minute: "2-digit"
         }; 
         return today.toLocaleDateString("en-us", options);
     }
