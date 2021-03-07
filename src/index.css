@@ -45,6 +45,7 @@ ul {
 
 li {
   margin: 2px;
+  padding: 2px;
   font-size: 25px;
   display: flex;
 }
@@ -52,13 +53,15 @@ li {
 .task-text {
   max-width: 400px;
   word-wrap: break-word;
-  margin: 0px;
-  margin-right: 5px;
 }
 
 .timestamp {
-  margin: 0px;
   font-size: 15px;
+}
+
+.task-text,.timestamp {
+  margin: 0px;
+  margin-right: 5px;
 }
 
 .deleteBtn {
@@ -85,6 +88,6 @@ button {
   cursor: pointer;
 }
 
-li,button,form input {
+li,button,form input,.card-content {
   border-radius: 5px;
 }
