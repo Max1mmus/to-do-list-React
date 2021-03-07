@@ -5,7 +5,7 @@ export const List = ({tasks, onDelete, checkboxChange}) => {
         <div className="list-wrapper">
             <ul>
                 {tasks.map((task, index) =>
-                    <li key={`list-${index}`}>
+                    <li key={`list-${index}`} style={{ backgroundColor: task.isDone ? '#8EFFEF57' : null }}>
                         <input 
                             type="checkbox" 
                             id={`input-${index}`} 
