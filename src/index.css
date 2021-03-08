@@ -34,6 +34,16 @@ h1 {
   margin-left: 5px;
 }
 
+.filterBtns-wrapper {
+  width: max-content;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.filterBtns-wrapper button {
+  background-color: transparent;
+}
+
 .list-wrapper {
   width: max-content;
   margin: auto;
@@ -45,8 +55,9 @@ ul {
 
 li {
   margin: 2px;
-  padding: 2px;
+  padding: 5px;
   font-size: 25px;
+  border: dotted 1px #000000a3;
   display: flex;
 }
 
@@ -89,5 +100,5 @@ button {
 }
 
 li,button,form input,.card-content {
-  border-radius: 5px;
+  border-radius: 3px;
 }
