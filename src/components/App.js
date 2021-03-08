@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import { useEffect } from 'react';
-import {Form} from './Form';
-import {List} from './List';
+import React, {useState, useEffect} from "react";
+import {FilterButtons} from "./FilterButtons";
+import {Form} from "./Form";
+import {ListItem} from "./ListItem";
 //localStorage.clear();
 
 export function App () {
-    const [newTask, setNewTask] = useState('');
+    const [newTask, setNewTask] = useState("");
     const [allTasks, setAllTasks] = useState([]);
+    const [filterValue, setFilter] = useState("All tasks");
 
     function onChange(e) {
         setNewTask(e.target.value);
@@ -19,9 +20,9 @@ export function App () {
             isDone: false,
             timeStamp: calcTime()
         };
-        if (newTask === '') return;
+        if (newTask === "") return;
 
-        setNewTask('');
+        setNewTask("");
         setAllTasks([...allTasks, task]);
     }
 
@@ -38,6 +39,35 @@ export function App () {
         setAllTasks(copiedTasks);
     }
 
+    function filterTasks() {
+        const filteredTasks = allTasks.filter((task,_) => {
+            if (filterValue === "Unfinished") {
+                return !task.isDone;
+            } else if(filterValue === "Completed") {
+                return task.isDone;
+            } else return allTasks;
+        })
+        return filteredTasks;
+    }
+
+    const taskList = filterTasks().map((task, index) => 
+        <ListItem
+            checkboxChange={(e) => checkboxChange(index,e)}
+            onDelete={() => removeTask(index)}
+            index={index}
+            task={task}
+            key={`list-${index}`}  
+        />
+    )
+
+    function changeFilter(filterOption) {
+        let currentFilter = [...filterValue];
+        if (currentFilter !== filterOption) {
+            currentFilter = filterOption;
+        }
+        setFilter(currentFilter);
+    }
+
     function calcTime () {
         const today = new Date(); 
         const options = {
@@ -46,7 +76,7 @@ export function App () {
         }; 
         return today.toLocaleDateString("en-us", options);
     }
-
+    
     useEffect(() => {
         const savedTasks = JSON.parse(localStorage.getItem("list"));
         if (savedTasks) {
@@ -60,18 +90,23 @@ export function App () {
     }, [allTasks]);
 
     return (
-        <div className='app'>
+        <div className="app">
             <h1>To-do List</h1>
             <Form
                 onSubmit={onSubmit}
                 onChange={onChange}
                 inputValue={newTask}
             />
-            <List
-                checkboxChange={(index,e) => checkboxChange(index,e)}
-                tasks={allTasks}
-                onDelete={(index) => {removeTask(index)}}
-            />
+            <div className="filterBtns-wrapper">
+                <FilterButtons
+                    filter={filterValue}
+                    changeFilter={changeFilter}/>
+            </div>
+            <div className="list-wrapper">
+                <ul>
+                    {taskList}
+                </ul>
+            </div>
         </div>
     )
 }
