@@ -18,7 +18,8 @@ export function App () {
         const task = {
             taskContent: newTask,
             isDone: false,
-            timeStamp: calcTime()
+            timeStamp: calcTime(),
+            id: Date.now().toString()
         };
         if (newTask === "") return;
 
