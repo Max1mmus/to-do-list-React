@@ -5,7 +5,7 @@ export const ListItem = ({onDelete, checkboxChange, index, task}) => {
         <li style={{ backgroundColor: task.isDone ? "#8EFFEF57" : null }}>
             <input 
                 type="checkbox" 
-                id={`input-${index}`} 
+                id={id} 
                 onChange={checkboxChange}
                 checked={task.isDone}>
             </input>

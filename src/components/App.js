@@ -55,7 +55,7 @@ export function App () {
         <ListItem
             checkboxChange={(e) => checkboxChange(index,e)}
             onDelete={() => removeTask(index)}
-            index={index}
+            id={task.id}
             task={task}
             key={`list-${index}`}  
         />
