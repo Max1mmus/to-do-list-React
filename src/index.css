@@ -59,6 +59,16 @@ li {
   font-size: 25px;
   border: dotted 1px #000000a3;
   display: flex;
+  animation: fadeIn .5s linear;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 
 .task-text {
@@ -82,6 +92,7 @@ li {
 
 li:hover {
   background-color: #8EFFEF57;
+  transition: all 0.2s ease-in;
 }
 
 input[type=checkbox]:checked + .card-content .task-text{
