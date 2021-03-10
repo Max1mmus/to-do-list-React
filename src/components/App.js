@@ -5,25 +5,17 @@ import {ListItem} from "./ListItem";
 //localStorage.clear();
 
 export function App () {
-    const [newTask, setNewTask] = useState("");
     const [allTasks, setAllTasks] = useState([]);
     const [filterValue, setFilter] = useState("All tasks");
 
-    function onChange(e) {
-        setNewTask(e.target.value);
-    }
-
-    function onSubmit(e) {
-        e.preventDefault();
+    function addTask(newTask) {
         const task = {
             taskContent: newTask,
             isDone: false,
             timeStamp: calcTime(),
             id: Date.now().toString()
         };
-        if (newTask === "") return;
 
-        setNewTask("");
         setAllTasks([...allTasks, task]);
     }
 
@@ -63,9 +55,7 @@ export function App () {
 
     function changeFilter(filterOption) {
         let currentFilter = [...filterValue];
-        if (currentFilter !== filterOption) {
-            currentFilter = filterOption;
-        }
+        if (currentFilter !== filterOption) currentFilter = filterOption;
         setFilter(currentFilter);
     }
 
