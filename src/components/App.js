@@ -24,28 +24,22 @@ export function App () {
         setAllTasks(newTasks);
     }
 
-    const checkboxChange = (index,e) => {
-        const copiedTasks = [...allTasks];
-        if (e.target.id === `input-${index}`) {
-            copiedTasks[index].isDone = !copiedTasks[index].isDone;
-        }
+    const checkboxChange = (e) => {
+        const copiedTasks = allTasks.map(task => {
+            if (task.id === e.target.id) return {...task, isDone: !task.isDone} 
+            return task;
+        });
         setAllTasks(copiedTasks);
     }
-
-    function filterTasks() {
-        const filteredTasks = allTasks.filter((task,_) => {
-            if (filterValue === "Unfinished") {
-                return !task.isDone;
-            } else if(filterValue === "Completed") {
-                return task.isDone;
-            } else return allTasks;
-        })
-        return filteredTasks;
+    const taskFilters = {
+        "All tasks" : () => true,
+        "Unfinished" : task => !task.isDone,
+        "Completed" : task => task.isDone
     }
-
-    const taskList = filterTasks().map((task, index) => 
+    
+    const taskList = allTasks.filter(taskFilters[filterValue]).map((task, index) => 
         <ListItem
-            checkboxChange={(e) => checkboxChange(index,e)}
+            checkboxChange={(e) => checkboxChange(e)}
             onDelete={() => removeTask(index)}
             id={task.id}
             task={task}
