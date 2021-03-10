@@ -108,6 +108,10 @@ export function App () {
                     {taskList}
                 </ul>
             </div>
+            <footer>
+                Built with <span id="heart"> ❤ </span> 
+                By: <a id="author" href="https://github.com/Max1mmus">Max1mmus</a>
+            </footer>
         </div>
     )
 }
