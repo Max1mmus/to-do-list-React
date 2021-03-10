@@ -93,15 +93,12 @@ export function App () {
     return (
         <div className="app">
             <h1>To-do List</h1>
-            <Form
-                onSubmit={onSubmit}
-                onChange={onChange}
-                inputValue={newTask}
-            />
+            <Form addTask={addTask} />
             <div className="filterBtns-wrapper">
                 <FilterButtons
                     filter={filterValue}
-                    changeFilter={changeFilter}/>
+                    changeFilter={changeFilter}
+                />
             </div>
             <div className="list-wrapper">
                 <ul>
@@ -109,7 +106,7 @@ export function App () {
                 </ul>
             </div>
             <footer>
-                Built with <span id="heart"> ❤ </span> 
+                Coded with <span id="heart"> ❤ </span> 
                 By: <a id="author" href="https://github.com/Max1mmus">Max1mmus</a>
             </footer>
         </div>
