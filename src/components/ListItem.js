@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ListItem = ({onDelete, checkboxChange, index, task}) => {
+export const ListItem = ({onDelete, checkboxChange, id, task}) => {
     return(
         <li style={{ backgroundColor: task.isDone ? "#8EFFEF57" : null }}>
             <input 
