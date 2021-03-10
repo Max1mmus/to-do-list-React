@@ -59,7 +59,7 @@ li {
   font-size: 25px;
   border: dotted 1px #000000a3;
   display: flex;
-  animation: fadeIn .5s linear;
+  animation: fadeIn .4s linear;
 }
 
 @keyframes fadeIn {
@@ -112,4 +112,19 @@ button {
 
 li,button,form input,.card-content {
   border-radius: 3px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: max-content;
+  margin: auto;
+}
+#heart {
+  color: red;
+}
+#author {
+  color: black;
 }
