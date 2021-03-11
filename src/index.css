@@ -14,6 +14,13 @@ code {
     monospace;
 }
 
+.app {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+}
+
 form {
   width: max-content;
   margin: auto;
@@ -47,6 +54,7 @@ h1 {
 .list-wrapper {
   width: max-content;
   margin: auto;
+  margin-bottom: 26px;
 }
 
 ul {
@@ -117,10 +125,9 @@ li,button,form input,.card-content {
 footer {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: max-content;
-  margin: auto;
+  width: 100%;
+  height: 25px;
+  text-align: center;
 }
 #heart {
   color: red;
