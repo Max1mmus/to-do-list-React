@@ -4,7 +4,11 @@
 
 * Saving to local storage
 
-###### *Update: added code for saving checked checkbox (~~crossed out~~) tasks to local storage*
+###### *Updates:*
+###### *1. Added code for saving checked checkbox (~~crossed out~~) tasks to local storage;* 
+###### *2. Added filters for: All tasks / Unfinished / Completed;*
+###### *3. Added timestamp on task;*
+
 ### Visual 
 
 <img src="sample.jpg" width="370">
