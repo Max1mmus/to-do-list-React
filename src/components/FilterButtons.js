@@ -9,7 +9,7 @@ export function FilterButtons ({changeFilter, filter}) {
                 onClick={() => changeFilter(filterOption)}
                 style={
                     filter === filterOption ?
-                    {backgroundColor: "rgba(0, 0, 0, 0.55)", color: "white"} : null
+                    {backgroundColor: "rgba(0, 0, 0, 0.5)", color: "white"} : null
                 }
             >
                 {filterOption}
